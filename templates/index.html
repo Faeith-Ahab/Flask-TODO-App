@@ -5,98 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO APP</title>
     
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    
 </head>
-<body style="background-color:#e5edff;">
+<style>
+  
+  
+  .container {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px;
+      
+      border-radius: 20px;
+      
+     
+  }
 
-<div    style="align-content: center;
-               padding-top: 30px;
-               padding-left: 40px;
-               padding-right: 40px;
-               position: relative;
-               border-radius: 10px;
-               padding: 20px;"> 
-    <div>
+
+  .title {
+      text-align: left;
+      font-size: 50px;
+      font-family: 'Times New Roman', Times, serif;
+      color: #134b5f;
+      margin-left: 35px;
+      
             
-        
-    <div style="position: absolute;
-                padding-left:250px ;">
-            <img src="C:\Users\Student\Desktop\TODO APP\todoiconone.png" width="150px" length="150px">
-    </div>
+  }
+  
+  .subtitle {
+    font-size:20px ;
+                           color: #1a6985;
+                           font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                           
+                           text-align: left;
+                           margin-left:35px;
+  
+  }
+
+  .todo {
+    margin-bottom: 20px;
+    text-align:center;
+    color:#2596be;
+}
+
+  .todo input[type="text"] {
+      width: calc(100% - 170px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      caret-color:#2596be;
+      
+
+      
+  }
+
+  .todo button {
+      align-items: center;
+      padding: 10px 20px;
+      border: none;
+      background-color: #1a6985;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color: #fff;
+      border-radius: 5px;
+      cursor: text;
+      
+
+
+  }
+  
+  .imager {
+    background-image: url('https://images.wallpaperscraft.com/image/single/tree_minimalism_bw_126828_3840x2400.jpg');
             
-    <div style="font-size: 50px;
-                font-family: 'Times New Roman', Times, serif;
-                position: absolute;
-                padding-left: 400px;">
-            <p>TODO APP <p>
-    </div>
-</div>
+            background-size: cover;
+            background-position: center;
+            
+            padding: 100px 0;
+            margin: 5px;
+            
 
-<br><br><br><br><br><br><br><br>
+
+            border-radius: 10px;
+    
+  }
+
+
+  
+</style>
+
+<body >
+
+    <div class="imager">
+
         
-        <div style="font-size:20px ;
-                   color: #13203d;
-                   font-family: 'Times New Roman', Times, serif;
-                   font-style: italic;
-                   padding-left: 450px;">
-              <p>Go ahead and make your list</p>
-        </div>
 
+  <div class="container">
+
+
+    <p class="title">TODO APP</p>
+    <p class="subtitle">Go ahead and make your list</p>
+    <div class="todo">
+        <form action="/add_task" method="POST">
+            <input type="text" name="task" placeholder="Enter task">
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <div class="tasks">
+        <ul id="tasklist">
+            {% for task in tasks %}
+            <li>
+                {{ task }}
+
+                <a type="button" class="close" href="{{url_for('delete_task', index=loop.index0) }}">&times;</a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+        
 </div>
 
 
-    
-<div style="border: 5px solid;
-            border-color: #8d96a9;
-            border-radius: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 10px;">    
-    <br>
-    <form style="background-color:#8d96a9 ;
-                 border-radius: 20px;
-                 padding: 20px;
-                 text-align: center;
-                 box-sizing: border-box;">
-                 
-    <input type="text" 
-          style="background-color: #e5edff;
-                 border-style: none;
-                 border-radius: 2px;
-                 font-size:25px;" name="new-task">
 
-    <button type="submit" 
-           style="border-style: none;
-                  border-radius: 2px;
-                  font-size: 23px;
-                  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                  color: #071e26;
-                  background-color: #e5edff;">Add Task</button>
-   </form>
-   <br>
-
-
-    
-</div>
-<pre>   </pre>
-
-
-<!-- dynamic component of list -->
-
-<div>
-    
-    <ul>
-{% for task in tasks %}
-    <li>
-        {{task}}
-    </li>
-    {% endfor%}
-    </ul>
-    
 </div>
 
-<!--assignment, add logic for deleting task-->
 
 
 </body>

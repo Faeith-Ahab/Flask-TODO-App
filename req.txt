@@ -1,0 +1,60 @@
+-- Create table
+
+ CREATE TABLE IF NOT EXISTS cohort3_group_two_details (
+ student_name VARCHAR(255) NOT NULL,
+ student_number VARCHAR(255) NOT NULL PRIMARY KEY,
+ electives VARCHAR(255) NOT NULL,
+ device_type VARCHAR(255) NOT NULL
+);
+
+INSERT INTO cohort3_group_two_details (student_name, student_number, electives, device_type)
+VALUES
+ ('FAITH', '2023/DCSE/0011/SS', 'Data Science, Computer Hardware', 'Desktop'),
+ ('SANDRA', '2023/DCSE/0026/SS', 'Graphics Design, Computer Hardware', 'Laptop'),
+ ('IMMACULATE', '2023/DCSE/0020/SS', 'Data Science, Computer Hardware', 'Laptop'),
+ ('MILIA', '2023/DCSE/0070/SS', 'Data Science', 'Laptop'),
+ ('ANGEL', '2023/DCSE/0040/SS', 'Data Science, Graphics Design', 'Laptop');
+
+SELECT * FROM cohort3_group_two_details;
+
+ALTER TABLE cohort3_group_two_details
+ADD COLUMN email VARCHAR(255) ;
+
+-- Update existing rows with email addresses
+
+UPDATE cohort3_group_two_details
+SET email = 'fae@gmail.com'
+WHERE student_name = 'FAITH';
+
+UPDATE cohort3_group_two_details
+SET email = 'sandy@gmail.com'
+WHERE student_name = 'SANDRA';
+
+UPDATE cohort3_group_two_details
+SET email = 'immy@gmail.com'
+WHERE student_name = 'IMMACULATE';
+
+UPDATE cohort3_group_two_details
+SET email = 'milia@gmail.com'
+WHERE student_name = 'MILIA';
+
+UPDATE cohort3_group_two_details
+SET email = 'angel@gmail.com'
+WHERE student_name = 'ANGEL';
+
+SELECT * FROM cohort3_group_two_details;
+
+--delete record/row
+
+SELECT * FROM cohort3_group_two_details;
+
+
+DELETE FROM cohort3_group_two_details
+WHERE device_type = 'Desktop';
+
+--delete field/column
+
+ALTER TABLE cohort3_group_two_details DROP COLUMN device_type;
+
+SELECT * FROM cohort3_group_two_details;
+
